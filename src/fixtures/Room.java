@@ -26,11 +26,25 @@ public class Room extends Fixture{
         exits.put(direction, exit);
     }
 
+    //When user open the door, setOpen is true;
     public void openDoor(String direction) throws Exception {
         try {
             Exit exit = getExitFromDirection(direction);
             exit.getDoor().setOpen(true);
         } catch (NoExitInDirectionException err) {
+            throw new NoDoorInDirectionException("There are no doors there.");
+        }
+    }
+
+    public void closeDoor(String direction) throws Exception {
+        try{
+            Exit exit = getExitFromDirection(direction);
+            if(!exit.getDoor().isOpen()){
+                System.out.println("The door is already closed.");
+                return;
+            }
+            exit.getDoor().setClose(false);
+        }catch (NoExitInDirectionException err){
             throw new NoDoorInDirectionException("There are no doors there.");
         }
     }
@@ -63,33 +77,7 @@ public class Room extends Fixture{
                 throw new DoorIsClosedException("The door is closed.");
             }
         }
-//            if (nextRoom == null) {
-//                throw new Exception("\n***No exits in that direction.***");
-//            } else {
-//                exit = nextRoom;
 
-                //Add door code here
-//                HashMap<RoomDirections,Exist> exitGates = nextRoom.getExits();
-//                for(Map.Entry<RoomDirections, Exist> exitGate : exitGates.entrySet()) {
-//                    if(!exitGate.getValue().getDoor().isOpen()){
-//                        String answer;
-//                        System.out.println("Do you want to open the door? ");
-//                        Scanner input = new Scanner(System.in);
-//                        answer = input.nextLine().toUpperCase();
-//                        if(answer.equals("YES") || answer.equals("Y")){
-//                            exitGate.getValue().getDoor().setOpen(!exitGate.getValue().getDoor().isOpen());
-//                            System.out.println(exitGate.getValue().getDoor().isOpen());
-//                            System.out.println("The door is opened !!!");
-//                        }
-//                    }
-//                }
-
-
-
-            //}
-//        } catch (Exception err) {
-//            System.out.println("\n***You cannot go there, there are no exits there.***");
-//        }
         return room;
     }
 }

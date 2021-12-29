@@ -1,8 +1,12 @@
 package game;
 
 import fixtures.Door;
+import fixtures.Fixture;
 import fixtures.Room;
 import helpers.RoomDirections;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RoomManager {
 
@@ -16,15 +20,14 @@ public class RoomManager {
 
     //Variables
     private static Room startingRoom;  //the starting room for the program.
-    private static Room[] rooms;
+    //private static Room[] rooms;
 
-    // private static Map <Integer, String> rooms = new HashMap<>();
-
+    private static Map< Integer, Room > rooms;
     //methods
     public static void init(){
-        rooms = new Room[5];   //all the room in the house
-
+        //rooms = new Room[5];   //all the room in the house
         //Create 5 rooms and set them into the array.
+        rooms = new HashMap<>();
         Room foyer = new Room(
                 "The Foyer",
                 "A colorful small foyer",
@@ -62,11 +65,17 @@ public class RoomManager {
                         "a bookshelf on the wall made the room look smart."
         );
 
-        rooms[0] = foyer;
-        rooms[1] = livingRoom;
-        rooms[2] = kitchen;
-        rooms[3] = masterBedroom;
-        rooms[4] = kidBedroom;
+//        rooms[0] = foyer;
+//        rooms[1] = livingRoom;
+//        rooms[2] = kitchen;
+//        rooms[3] = masterBedroom;
+//        rooms[4] = kidBedroom;
+        rooms.put(1,foyer);
+        rooms.put(2,livingRoom);
+        rooms.put(3,kitchen);
+        rooms.put(4,masterBedroom);
+        rooms.put(5,kidBedroom);
+
 
         Door doorFromFoyerAndLivingRoom = new Door();
         Door doorLivingRoomAndKitchen = new Door();

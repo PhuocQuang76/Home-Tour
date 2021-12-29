@@ -2,5 +2,8 @@ package helpers;
 
 public enum AllowedCommands {
     GO,
-    OPEN
+    OPEN,
+    CLOSE,
+    QUIT,
+    Q
 }

@@ -21,14 +21,29 @@ public class Player {
                 move(command[1]);
             } else if (playerCommand == AllowedCommands.OPEN) {
                 // open the door
-                openDoor(command[1]);
+                openDoorAtPlayer(command[1]);
+            }else if(playerCommand == AllowedCommands.CLOSE){
+                //close the door
+                closeDoorAtPlayer(command[1]);
             }
         } catch (IllegalArgumentException err) {
             System.out.println("That command is not valid.  It has to be \"open\" or \"go.\"\n");
         }
     }
 
-    public boolean openDoor(String direction) {
+    public boolean closeDoorAtPlayer(String direction){
+        try {
+            currentRoom.closeDoor(direction);
+
+            String nextRoomName = currentRoom.getExit(direction).getName();
+            System.out.println("Creek! The " + direction + " door to " + nextRoomName + " is closed.");
+            System.out.println("---------------------");
+            return false;
+        }catch (Exception e){
+            return false;
+        }
+    }
+    public boolean openDoorAtPlayer(String direction) {
         try {
             currentRoom.openDoor(direction);
             String nextRoomName = currentRoom.getExit(direction).getName();
