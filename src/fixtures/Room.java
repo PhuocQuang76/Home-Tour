@@ -9,14 +9,6 @@ import java.util.HashMap;
 
 public class Room extends Fixture{
     private HashMap<RoomDirections, Exit> exits; //variables are enum & which room
-
-    //Constructors
-    public Room(String name, String shortDescription, String longDescription) {
-        super(name, shortDescription, longDescription);
-        this.exits = new HashMap<>();
-    }
-
-    //Methods`
     public HashMap<RoomDirections, Exit> getExits() {
         return exits;
     }
@@ -26,6 +18,13 @@ public class Room extends Fixture{
         exits.put(direction, exit);
     }
 
+    //Constructors
+    public Room(String name, String shortDescription, String longDescription) {
+        super(name, shortDescription, longDescription);
+        this.exits = new HashMap<>();
+    }
+
+    //Methods`
     //When user open the door, setOpen is true;
     public void openDoor(String direction) throws Exception {
         try {

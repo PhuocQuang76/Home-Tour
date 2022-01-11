@@ -66,7 +66,7 @@ public class Main {
 
                 }
             }catch (ArrayIndexOutOfBoundsException e){
-                    System.out.println("Invalid command.");
+                System.out.println("Invalid command.");
                 printRoom(player);
             }catch (IllegalArgumentException e){
                 printRoom(player);
@@ -98,7 +98,7 @@ public class Main {
             if (exitGate.getValue().getDoor().isOpen()) {
                 System.out.println(exitGate.getValue().getRoom().getShortDescription());
             } else {
-                System.out.println("The door is closed.");
+                System.out.println( "-> to " + exitGate.getValue().getRoom().getName() + " : (The door is closed.)");
 
             }
         }
